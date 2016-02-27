@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>task 12</title>
+    <script src="lib/jquery-2.1.3.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/d3.v3.min.js"></script>
+    
+    <script src="scripts/config.js"></script>
+    <script src="scripts/gateOperators.js"></script>
+    <script src="scripts/labelStreams.js"></script>
+    <script src="scripts/functions.js"></script>
+    <script src="scripts/gateOperatorDrag.js"></script>
+    <script src="scripts/labelStreamDrag.js"></script>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="all" type="text/css">
+	<link href="css/custom.css" rel="stylesheet" media="all" type="text/css">
+	<link href="css/index.css" rel="stylesheet" media="all" type="text/css">
+
+</head>
+
+<body>
+<!-- Responsive navbar with toggle-->
+		
+	<nav class="navbar navbar-default navbar-fixed-top addcol">
+		<div class="container-fluid">
+	  
+			<!--toggle part-->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+				</button>
+				<div id="logo" class="">
+					<img src="images/logo.png" width="50%" height="50%">
+				</div>
+				<a class="navbar-brand pull-right" href="#" id="Electro_Simulator_main">Electro Simulator.</a>
+			</div>
+			
+			<!-- menu and list-->
+			<div class="collapse navbar-collapse pull-right" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="index.html" id="Electro_Simulator">Home</a></li>
+				
+				<!-- drop down toggle-->
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="Electro_Simulator">DEP <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#" id="Electro_Simulator">CSC</a></li>
+						<li><a href="#" id="Electro_Simulator">PMM</a></li>
+						<li><a href="#" id="Electro_Simulator">AMM</a></li>
+					</ul>
+					</li>
+					<li><a href="project_proposal.html" id="Electro_Simulator">Project Proposal</a></li>
+					<li><a href="#" id="Electro_Simulator">About Us</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#" id="Electro_Simulator"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+					<li><button type="button" class="btn navbar-btn" id="Electro_Simulator"><span class="glyphicon glyphicon-log-out"></span> Logout</button></li>
+				</ul>
+			</div>
+		</div>
+	</nav>	
+<!-- End of Responsive navbar with toggle-->
+
+		
+			<div class="" id="menubar"> 
+				
+			</div>
+	
+			<div class="out" id="output">
+					<div class="" id="table"></div>
+					
+			
+			</div>
+				
+	
+
+
+
+
+		<script>
+					//outputResult to display output
+					
+					function clickFunction(e) {
+						e.preventDefault();
+						var first_value;
+						var second_value;
+						var fieldValue = new Array(2);
+					
+						var inputs=['inputvalue1','inputvalue2','inputvalue3','inputvalue4'];
+						var fields=['insert_data1','insert_data2','insert_data3','insert_data4'];
+						
+						
+						
+							fields.forEach( function(e,i,a){
+								var field=document.getElementsByName( e )[0];
+								if( field.value==1 || field.value==0 ){
+								document.getElementsByName( inputs[i] )[0].innerHTML=field.value;
+								
+								fieldValue[i] = field.value;
+								
+								
+								
+								//fieldValue.push(field.value);
+								
+								/*var result =(function () {
+									first_value = fieldValue.pop();
+									second_value = fieldValue.pop();
+								
+									return function() {return first_value+second_value;}
+						})();*/
+						 if(typeof fieldValue != "undefined" && fieldValue != null && fieldValue.length > 0){
+						       
+							   /*if (elem.attr('type') == 'and_gate' || 	elem.attr('type') == 'or_gate' || 	elem.attr('type') == 'not_gate' || 	elem.attr('type') == 'nand_gate' || 	elem.attr('type') == 'nor_gate' || 	elem.attr('type') == 'xor_gate' ||	elem.attr('type') == 'xnor_gate') */
+							  
+								document.getElementsByName('outputResult')[0].innerHTML=parseInt(fieldValue[i])*parseInt(fieldValue[i-1]);
+								
+								}
+								//alert(fieldValue.pop());
+								}
+								else {alert("Please enter 0 or 1 !!");
+								document.getElementsByName('outputResult')[0].innerHTML="wrong inputs!";}
+							});
+							
+						return false;
+						}
+						
+					
+		</script>
+<script>
+
+	//table
+	
+		function createTableStream(targetId, streamName){
+	
+		var target = $('#' + targetId);
+		var table = $('<table border="1" width="100%" height="100%" align="center">',{
+						id: 'tablefor'+streamName			
+						});
+		var row = $('<tr>'); //row of the table
+		
+		//Table row for input 1
+		if(streamName == 'Input_1'){
+			var colData1_in1 = $('<td>', {
+					text: 'Input 1'}); //first data of <td> "label name" </td> in the row
+			
+			var colData2_in1 = $('<td>');
+			var data_1_in1 = $('<lable>', {	
+					name: 'inputvalue1', //second data of <td> "input value" </td> in the row
+				});
+				
+			data_1_in1.appendTo(colData2_in1);
+			colData1_in1.appendTo(row);
+			colData2_in1.appendTo(row);
+			
+		}
+		// Table row for input 2
+		if(streamName == 'Input_2'){
+			var colData1_in2 = $('<td>', {
+				text: 'Input 2'}); //first data of <td> "label name" </td> in the row
+			
+			var colData2_in2 = $('<td>');
+			var data_1_in2 = $('<lable>', {	
+					name: 'inputvalue2', //second data of <td> "input value" </td> in the row
+				});
+				
+			data_1_in2.appendTo(colData2_in2);
+			colData1_in2.appendTo(row);
+			colData2_in2.appendTo(row);
+		}
+		//Table row for input 3
+		if(streamName == 'Input_3'){
+			var colData1_in3 = $('<td>', {
+				text: 'Input 3'}); //first data of <td> "label name" </td> in the row
+			
+			var colData2_in3 = $('<td>');
+			var data_1_in3 = $('<lable>', {	
+					name: 'inputvalue3', //second data of <td> "input value" </td> in the row
+				});
+				
+			data_1_in3.appendTo(colData2_in3);
+			colData1_in3.appendTo(row);
+			colData2_in3.appendTo(row);
+		}
+		//Table row for input 4
+		if(streamName == 'Input_4'){
+			var colData1_in4 = $('<td>', {
+					text: 'Input 4'}); //first data of <td> "label name" </td> in the row
+			
+			var colData2_in4 = $('<td>');
+			var data_1_in4 = $('<lable>', {	
+					name: 'inputvalue4', //second data of <td> "input value" </td> in the row	
+				});
+				
+			data_1_in4.appendTo(colData2_in4);
+			colData1_in4.appendTo(row);
+			colData2_in4.appendTo(row);
+		
+		}
+		//Table row for output
+		if(streamName == 'Output'){
+			var colData1_inOp = $('<td>', {
+					text: 'Output '}); //first data of <td> "label name" </td> in the row
+			
+			var colData2_inOp = $('<td>');
+			var data_1_inOp = $('<lable>', {	
+					name: 'outputResult', //second data of <td> "input value" </td> in the row	
+					text: 'null'
+				});
+				
+			data_1_inOp.appendTo(colData2_inOp);
+			colData1_inOp.appendTo(row);
+			colData2_inOp.appendTo(row);
+		}
+	
+        row.appendTo(table);
+        table.appendTo(target);
+		
+		return $('#table_' +streamName);
+
+	}
+	//form
+	
+
+    function createFormStream(targetId, streamName)
+	{
+	var target = $('#' + targetId);
+	/*var form = $('<form>', { id: streamName });
+			form.appendTo(target);*/
+	var formtable = $('<table  align="right">');
+			formtable.appendTo(target);
+
+	var tr2 = $('<tr>');
+	
+	
+	var tdInput = $('<td>');
+	/* input */
+	if(streamName == "Input_1")
+			{
+			var tdLabel = $('<td>',{ text: streamName });
+			var input_2 = $('<input>', { 
+					name: 'insert_data1',
+					width:'100%',
+					placeholder:'Enter value for input 1',
+					type: 'text'
+				});
+				input_2.appendTo(tdInput);
+			}
+	if(streamName == "Input_2")
+			{
+			var tdLabel = $('<td>',{ text: streamName });
+			var input_2 = $('<input>', { 
+					name: 'insert_data2', 
+					placeholder:'Enter value for input 2',
+					width:'100%',
+					type: 'text'
+				});
+				input_2.appendTo(tdInput);
+			}
+	if(streamName == "Input_3")
+			{
+			var tdLabel = $('<td>',{ text: streamName });
+			var input_2 = $('<input>', { 
+					name: 'insert_data3', 
+					placeholder:'Enter value for input 3',
+					width:'100%',
+					type: 'text'
+				});
+				input_2.appendTo(tdInput);
+			}
+	if(streamName == "Input_4")
+			{
+			var tdLabel = $('<td>',{ text: streamName });
+			var input_2 = $('<input>', { 
+					name: 'insert_data4', 
+					placeholder:'Enter value for input 4',
+					width:'100%',
+					type: 'text'
+				});
+				input_2.appendTo(tdInput);
+			}
+			
+			
+			
+			
+	if(streamName == "Output")
+			{
+			$('<br>');
+			var tdLabel = $('<td>',{ text: ' ' });
+			var input_2 = $('<input>', { 
+					name: 'getoutput', 
+					type: 'submit',
+					value: 'DONE',
+					onclick: 'clickFunction(event)'	
+				});
+				input_2.appendTo(tdInput);	
+			}
+			tdLabel.appendTo(tr2);
+			tdInput.appendTo(tr2);
+			tr2.appendTo(formtable);
+			
+			
+	return $('#form_' + streamName);
+	}
+
+
+    
+
+
+</script>
+
+
+	
+<script src="scripts/layout.js"></script>
+</body>
+</html>

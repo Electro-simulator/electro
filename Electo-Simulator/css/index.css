@@ -1,0 +1,157 @@
+
+body 
+{
+	color:#000000;
+	background-color:rgba(64,51,64,0.8);
+	background-image:url('Background Image');
+	background-repeat:no-repeat;
+}
+
+#logo
+{
+	width:100px;
+	height:100px;
+	left:0px;
+	top:0px;
+	position:absolute;
+}
+#Electro_Simulator_main
+{
+	color:#C09;
+	background-color:transparent;
+	left:65px;
+	position:absolute;
+	
+}
+#Electro_Simulator
+{
+	color:#C09;
+	background-color:transparent;
+}
+#Electro_Simulator:hover
+{
+	background-color:#000000;
+	color:#ffffff;
+}
+
+#Electro_Simulator:active
+{
+	background-color:#000000;
+	color:#ffffff;
+}
+#gate_list
+{
+	left:0px;
+	top:70px;
+	bottom:60px;
+	width:20%;
+	height:100%;
+	position:absolute;
+	
+	
+}
+#gates
+{
+	
+	top:0px;
+	left:0px;
+	background-color:#000000;
+	color:#ffffff;
+	margin-bottom:20px;
+	
+}
+#gate_title
+{	
+	background-color:rgba(32,26,32,0.8);
+	color:#ffffff;
+}
+#window
+{
+	right:10px;
+	top:70px;
+	/*margin-bottom:40px;*/
+	width:80%;
+	height:80%;
+	position:absolute;
+	padding:25px;
+	padding-bottom:50px;
+	color: white;
+	
+}
+#menu_bar
+{	top:100px;
+	position:relative;
+	width:100%;
+	height:100%;
+	background-color:rgba(255,255,255,1);
+	
+}
+#drop_area
+{
+	width:100%;
+	height:95%;
+}
+#sheat
+{
+	position:absolute;
+	bottom:3px;
+	color:rgba(153,0,102,1);
+}
+.colour
+{
+	border-radius: 0.75em;
+	background-color:rgba(255,251,255,0.8);
+}
+.addcol
+{
+	background-color:rgb(51,51,51);
+	border-color:rgba(51,51,51,0.8);
+	-webkit-background-size: cover; 
+	background-size: cover; 
+	background-position: 50% 50%; 
+	background-repeat: no-repeat no-repeat;
+	-webkit-box-shadow: 0px 7px 11px rgba(0, 0, 0, 0.7);
+	-moz-box-shadow:    0px 7px 11px rgba(0, 0, 0, 0.7);
+	box-shadow:         0px 7px 11px rgba(0, 0, 0, 0.7);
+}
+ 
+#foot
+{
+	position:fixed;
+	background-color:rgba(51,51,51,0.9);
+	right:0px;
+	width:100%;
+	height:3%;
+	bottom:0px;
+	color:#FFF;
+	margin-top:0px;
+}
+div.scroll
+{
+	height:80%; 
+    overflow:auto;
+}
+.button
+{
+	width:100px;
+	height:30px;
+	background-color:rgba(51,51,51,0.9);
+}
+.button:hover
+{
+	background-color:rgba(64,0,64,1);
+	color:rgba(255,255,255,1);
+}
+.button:visited
+{
+	background-color:rgba(64,0,64,1);
+	color:rgba(255,255,255,1);
+}
+
+#sidebar
+{
+top:100px;
+right:0px;
+position:absolute;
+}
+
